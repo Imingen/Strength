@@ -22,10 +22,6 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--  TODO: change properties for narrow view  -->
-                        <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
-                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
                     <VisualState.StateTriggers>
@@ -58,41 +54,7 @@
                 <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
                 <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
             </controls:PageHeader.SecondaryCommands>
-
         </controls:PageHeader>
-
-        <controls:Resizer x:Name="parameterResizer" Margin="16,16,16,0"
-                          RelativePanel.AlignLeftWithPanel="True"
-                          RelativePanel.Below="pageHeader">
-
-            <TextBox MinWidth="150" MinHeight="62"
-                     Header="Parameter to pass"
-                     Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     TextWrapping="Wrap">
-                <Interactivity:Interaction.Behaviors>
-                    <!--  enable submit on enter key  -->
-                    <Behaviors:KeyBehavior Key="Enter">
-                        <Core:CallMethodAction MethodName="GotoDetailsPage" TargetObject="{Binding}" />
-                    </Behaviors:KeyBehavior>
-                    <!--  focus on textbox when page loads  -->
-                    <Core:EventTriggerBehavior>
-                        <Behaviors:FocusAction />
-                    </Core:EventTriggerBehavior>
-                </Interactivity:Interaction.Behaviors>
-            </TextBox>
-
-        </controls:Resizer>
-
-        <Button x:Name="submitButton"
-                Click="{x:Bind ViewModel.GotoDetailsPage}" Content="Submit"
-                RelativePanel.AlignBottomWith="parameterResizer"
-                RelativePanel.RightOf="parameterResizer" />
-
-        <TextBlock x:Name="stateTextBox" Margin="16,16,0,0"
-                   RelativePanel.AlignLeftWith="parameterResizer"
-                   RelativePanel.Below="parameterResizer"
-                   Text="Current Visual State" />
-
     </RelativePanel>
 </Page>
 
