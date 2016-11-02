@@ -25,6 +25,7 @@ namespace Strength.App.Views
         public ExercisePage()
         {
             this.InitializeComponent();
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
     }
 }
