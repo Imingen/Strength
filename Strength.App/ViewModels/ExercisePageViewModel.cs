@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
 using System.Collections.ObjectModel;
+using Strength.Models;
 
 namespace Strength.App.ViewModels
 {
    public class ExercisePageViewModel :ViewModelBase
     {
-        public ObservableCollection<>
+        public ObservableCollection<Excercise> exercises { get; set; } = new ObservableCollection<Excercise>();
+
+        Excercise pullup = new Excercise(1, "Pullup", "Fuck the bar lil nigg nigg", Excercise.Category.Back);
+        Excercise deadlift = new Excercise(2, "Deadlift", "Be alpha", Excercise.Category.Back);
+
+        public ExercisePageViewModel()
+        {
+            halla();
+        }
+
+        public void halla()
+        {
+            exercises.Add(pullup);
+            exercises.Add(deadlift);
+        }
 
 
 

@@ -10,9 +10,18 @@ namespace Strength.Models
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
+
+        /*Put these in exercise instead
         public bool Compound { get; set; }
         public bool Isolation { get; set; }
+         */
 
-        public virtual ICollection<Excercise> Excersices { get; set; }
+        public Category(int CategoryId, string CategoryName)
+        {
+            this.CategoryId = CategoryId;
+            this.CategoryName = CategoryName;
+        }
+        
+        public virtual ICollection<Excercise> Excercises { get; set; }
     }
 }
