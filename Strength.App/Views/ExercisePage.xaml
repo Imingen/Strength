@@ -56,7 +56,7 @@
                 <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
             </controls:PageHeader.SecondaryCommands>
         </controls:PageHeader>
-        <ComboBox x:Name="categoryCB"  ItemsSource="{Binding exercises}" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="340" Margin="10,53,-286,-53"/>
+        <ComboBox x:Name="categoryCB" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="340" Margin="10,53,-286,-53"/>
 
 
 
