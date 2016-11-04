@@ -11,30 +11,45 @@ using static Strength.Models.Excercise;
 
 namespace Strength.App.ViewModels
 {
-   public class ExercisePageViewModel :ViewModelBase
+    public class ExercisePageViewModel : ViewModelBase
     {
         public ObservableCollection<Excercise> exercises { get; set; } = new ObservableCollection<Excercise>();
+        public ObservableCollection<Excercise> selectedexercises { get; set; } = new ObservableCollection<Excercise>();
 
         public ObservableCollection<Category> categories { get; set; } = new ObservableCollection<Category>(Enum.GetValues(typeof(Category)).Cast<Category>().ToList());
 
-
+        public Category categoryFromCB { get; set; }
 
         Excercise pullup = new Excercise(1, "Pullup", "Fuck the bar lil nigg nigg", Excercise.Category.Back);
         Excercise deadlift = new Excercise(2, "Deadlift", "Be alpha", Excercise.Category.Back);
+        Excercise bench = new Excercise(2, "Bench", "Be alpha", Excercise.Category.Chest);
 
         public ExercisePageViewModel()
         {
             halla();
+            addFromCB(categoryFromCB);
         }
-
 
         public void halla()
         {
             exercises.Add(pullup);
             exercises.Add(deadlift);
+            exercises.Add(bench);
         }
 
-        public void GotoDetailsPage() =>
+        
+        public void addFromCB(Category param)
+        {
+            foreach(var value in exercises)
+            {
+                if (value.category == param)
+                {
+                    selectedexercises.Add(value);
+                }
+            }
+        }
+
+    public void GotoDetailsPage() =>
           NavigationService.Navigate(typeof(Views.DetailPage));
 
         public void GotoSettings() =>

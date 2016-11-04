@@ -28,19 +28,11 @@
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--  TODO: change properties for normal view  -->
-                        <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
-                    </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateWide">
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
                     </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--  TODO: change properties for wide view  -->
-                        <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
-                    </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
@@ -56,7 +48,8 @@
                 <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
             </controls:PageHeader.SecondaryCommands>
         </controls:PageHeader>
-        <ComboBox x:Name="categoryCB" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="340" Margin="10,53,-286,-53"/>
+        <ComboBox x:Name="categoryCB" SelectedItem="{Binding categoryFromCB}" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Top" Margin="10,53,-350,-53"/>
+        <TextBlock x:Name="textBlock"  DataContext="{Binding selectedexercises}" HorizontalAlignment="Left" Height="20" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="340" Margin="10,90,-288.333,-90"/>
 
 
 
