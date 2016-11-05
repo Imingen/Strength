@@ -45,6 +45,7 @@ namespace Strength.App.ViewModels
             await Task.CompletedTask;
         }
 
+
         public void GotoDetailsPage() =>
             NavigationService.Navigate(typeof(Views.DetailPage), Value);
 
