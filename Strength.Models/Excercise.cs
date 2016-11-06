@@ -26,7 +26,7 @@ namespace Strength.Models
 
         public override string ToString()
         {
-            return $"{ExerciseName}-{Category}\n{ExcersiceDescription}";
+            return $"{ExerciseName} - {Category}\n{ExcersiceDescription}";
         }
 
     }

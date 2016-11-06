@@ -54,9 +54,9 @@
             <StackPanel>
                 <ListBox x:Name="listBox" ItemsSource="{Binding exercises}"  HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="630" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-2"/>
             </StackPanel>
-            <StackPanel Width="648">
+            <StackPanel Width="648" HorizontalAlignment="Right">
                 <Border BorderThickness="2" BorderBrush="Black">
-                    <TextBlock Text="Create a new exercise" FontSize="24" FontFamily="Consolas" TextAlignment="Center"/>
+                    <TextBlock Text="Create a new exercise" FontSize="24" FontFamily="Consolas" TextAlignment="Center" />
                 </Border>
                 <TextBox PlaceholderText="ExerciseName" Name="ExerciseNameTB" Text="{Binding Name,Mode=TwoWay}"/>
                 <TextBox PlaceholderText="Category" Name="CategoryTB" Text="{Binding Category,Mode=TwoWay}"/>

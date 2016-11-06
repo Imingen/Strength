@@ -25,14 +25,13 @@ namespace Strength.App.ViewModels
 
         public ExercisePageViewModel()
         {
-            //halla();
-            //Excercise pullup = new Excercise("Pullup", "Fuck the bar lil nigg nigg", "Back");
-            //Excercise deadlift = new Excercise("Deadlift", "Be alpha", "Back");
-            //Excercise bench = new Excercise("Bench", "Be alpha", "Chest");
+            Excercise pullup = new Excercise("Pullup", "Fuck the bar lil nigg nigg", "Back");
+            Excercise deadlift = new Excercise("Deadlift", "Be alpha", "Back");
+            Excercise bench = new Excercise("Bench", "Be alpha", "Chest");
 
-            //exercises.Add(pullup);
-            //exercises.Add(deadlift);
-            //exercises.Add(bench);
+            exercises.Add(pullup);
+            exercises.Add(deadlift);
+            exercises.Add(bench);
         }
 
         //public void halla()
