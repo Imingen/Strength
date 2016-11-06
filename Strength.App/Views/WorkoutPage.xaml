@@ -11,7 +11,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:Strength.App.ViewModels"  mc:Ignorable="d">
 
-
     <Page.DataContext>
         <vm:WorkoutPageViewModel x:Name="ViewModel" />
     </Page.DataContext>
@@ -38,7 +37,10 @@
                 <TextBox Name="workoutName" PlaceholderText="Name of workout" Text="{Binding Name, Mode=TwoWay}"/>
                 <Button Content="Create" Height="60" Width="600" FontSize="36" FontFamily="Perpetua Titling MT" Margin="0.386,0,-0.386,0" Click="{x:Bind ViewModel.createWorkout}">
                 </Button>
-                <ListBox ItemsSource="{Binding workouts}" ></ListBox>
+                <ListBox Name ="LB" ItemsSource="{Binding workouts}" ></ListBox>
+            </StackPanel>
+            <StackPanel Width="679" Height="669">
+                <ListView DataContext="{Binding SelectedItem, ElementName=LB}"></ListView>
             </StackPanel>
             <StackPanel>
 

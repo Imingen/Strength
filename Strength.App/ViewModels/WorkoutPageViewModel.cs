@@ -15,6 +15,14 @@ namespace Strength.App.ViewModels
     {
         public ObservableCollection<Workout> workouts { get; set; } = new ObservableCollection<Workout>();
 
+        Workout pleb = new Workout("pleb");
+        Excercise ko = new Excercise("he", "heheh", "hehehe");
+        Excercise bench = new Excercise("Bench", "Be alpha", "Chest");
+
+        public WorkoutPageViewModel()
+        {
+            gege();
+        }
 
         private string name;
         public string Name
@@ -38,7 +46,12 @@ namespace Strength.App.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+        public void gege()
+        {
 
+
+            pleb.Exercises.Add(bench);
+        }
         public void createWorkout()
         {
             Workout hei = new Workout(name);
