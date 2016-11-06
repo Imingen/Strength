@@ -12,6 +12,7 @@ namespace Strength.Models
         public string ExcersiceDescription { get; set; }
         public string Category { get; set; }
 
+
         /*Image prop plez
          * public int MyProperty { get; set; }
          */
@@ -23,6 +24,7 @@ namespace Strength.Models
             this.Category = categ;
 
         }
+
 
         public override string ToString()
         {
