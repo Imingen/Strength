@@ -19,30 +19,30 @@ namespace Strength.App.ViewModels
     public class ExercisePageViewModel : ViewModelBase, INotifyPropertyChanged
     {
         public ObservableCollection<Excercise> exercises { get; set; } = new ObservableCollection<Excercise>();
-        public ObservableCollection<string> categories { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<Category> categories { get; set; } = new ObservableCollection<Category>();
 
 
 
         public ExercisePageViewModel()
         {
-            halla();
-            Excercise pullup = new Excercise("Pullup", "Fuck the bar lil nigg nigg", "Back");
-            Excercise deadlift = new Excercise("Deadlift", "Be alpha", "Back");
-            Excercise bench = new Excercise("Bench", "Be alpha", "Chest");
+            //halla();
+            //Excercise pullup = new Excercise("Pullup", "Fuck the bar lil nigg nigg", "Back");
+            //Excercise deadlift = new Excercise("Deadlift", "Be alpha", "Back");
+            //Excercise bench = new Excercise("Bench", "Be alpha", "Chest");
 
-            exercises.Add(pullup);
-            exercises.Add(deadlift);
-            exercises.Add(bench);
+            //exercises.Add(pullup);
+            //exercises.Add(deadlift);
+            //exercises.Add(bench);
         }
 
-        public void halla()
-        {
-            categories.Add("Back");
-            categories.Add("Chest");
-            categories.Add("Shoulder");
-            categories.Add("Legs");
-            categories.Add("Arms");
-        }
+        //public void halla()
+        //{
+        //    categories.Add(Back);
+        //    categories.Add(Chest);
+        //    categories.Add("Shoulder");
+        //    categories.Add("Legs");
+        //    categories.Add("Arms");
+        //}
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -102,22 +102,10 @@ namespace Strength.App.ViewModels
         }
     
 
-    public void Create_btnClick1(string name, string description, string categ)
+        public void createExercise()
         {
-            Excercise koko = new Excercise(name, description, categ);
+            Excercise koko = new Excercise(name, description, category);
             exercises.Add(koko);
-        }
-
-        public void Create_btnClick(object sender, RoutedEventArgs e)
-        {
-            Excercise koko = new Excercise(Name, Description, Category);
-            exercises.Add(koko);
-        }
-
-        public async void ShowDialog_Click(object sender, RoutedEventArgs e)
-        {
-            CreateExercise_PopUp dialog = new CreateExercise_PopUp();
-            await dialog.ShowAsync();
         }
 
 

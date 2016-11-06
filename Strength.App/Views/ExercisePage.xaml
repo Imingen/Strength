@@ -15,46 +15,55 @@
         <vm:ExercisePageViewModel x:Name="ViewModel" />
     </Page.DataContext>
 
-    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <RelativePanel>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                    <VisualState x:Name="VisualStateNarrow">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                    <VisualState x:Name="VisualStateNormal">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                    <VisualState x:Name="VisualStateWide">
+                        <VisualState.StateTriggers>
+                            <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                        </VisualState.StateTriggers>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
 
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
-                <VisualState x:Name="VisualStateNarrow">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="VisualStateNormal">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-                <VisualState x:Name="VisualStateWide">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
-                    </VisualState.StateTriggers>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-
-        <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
+            <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True" Text="Exercises">
 
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
-            </controls:PageHeader.SecondaryCommands>
-        </controls:PageHeader>
-        <ComboBox x:Name="categoryCB" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Top" Margin="10,53,-350,-53"/>
-        <Button x:Name="GoToCreateExercise" Content="Create new" Click="{x:Bind ViewModel.ShowDialog_Click}" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="100" Margin="379,53,-414,-53"/>
+                <!--  secondary commands  -->
+                <controls:PageHeader.SecondaryCommands>
+                    <AppBarButton Click="{x:Bind ViewModel.GotoSettings}" Label="Settings" />
+                    <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}" Label="Privacy" />
+                    <AppBarButton Click="{x:Bind ViewModel.GotoAbout}" Label="About" />
+                </controls:PageHeader.SecondaryCommands>
+            </controls:PageHeader>
+        </RelativePanel>
+        <ComboBox x:Name="categoryCB" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Top" Margin="0,0,1090,0"/>
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <ListBox x:Name="listBox" ItemsSource="{Binding exercises}"  HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="630" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-2"/>
+            </StackPanel>
+            <StackPanel Width="648">
+                <Border BorderThickness="2" BorderBrush="Black">
+                    <TextBlock Text="Create a new exercise" FontSize="24" FontFamily="Consolas" TextAlignment="Center"/>
+                </Border>
+                <TextBox PlaceholderText="ExerciseName" Name="ExerciseNameTB" Text="{Binding Name,Mode=TwoWay}"/>
+                <TextBox PlaceholderText="Category" Name="CategoryTB" Text="{Binding Category,Mode=TwoWay}"/>
+                <TextBox PlaceholderText="Description" Name="DescriptionTB" Height="125" Text="{Binding Description,Mode=TwoWay}"/>
+                <Button Content ="Create" Height="113" Width="648" FontSize="48" Click="{x:Bind ViewModel.createExercise }" />
 
-        <ListBox x:Name="listBox" ItemsSource="{Binding exercises}"  HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" Width="1280" Margin="10,96,-10,-265"/>
-
-
-
-
-    </RelativePanel>
+            </StackPanel>
+        </StackPanel>
+    </StackPanel>
 </Page>
