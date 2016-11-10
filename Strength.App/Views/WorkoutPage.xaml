@@ -35,7 +35,7 @@
                     <TextBlock Text="Create a new workout" FontSize="36" TextAlignment="Center" FontFamily="Viner Hand ITC"></TextBlock>
                 </Border>
                 <TextBox Name="workoutName" PlaceholderText="Name of workout" Text="{Binding Name, Mode=TwoWay}"/>
-                <Button Content="Create" Height="60" Width="600" FontSize="36" FontFamily="Perpetua Titling MT" Margin="0.386,0,-0.386,0" Click="{x:Bind ViewModel.createWorkout}">
+                <Button Content="Create" Height="60" Width="600" FontSize="36" FontFamily="Perpetua Titling MT" Margin="0.386,0,-0.386,0">
                 </Button>
                 <ListBox Name ="LB" ItemsSource="{Binding workouts}" ></ListBox>
             </StackPanel>

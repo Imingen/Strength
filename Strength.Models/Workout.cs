@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +9,18 @@ namespace Strength.Models
 {
    public class Workout
     {
-        public int workoutId { get; set; }
-        public string workoutName { get; set; }
-        public List<Excercise> Exercises { get; set; }
+        [Key]
+        public int WorkoutId { get; set; }
+        [Required]
+        public string WorkoutName { get; set; }
 
-        public Workout(string name)
-        {
-            this.workoutName = name;
-      }
+        public virtual ICollection<Excercise> Exercises { get; set; }
+
+        
 
         public override string ToString()
         {
-            return $"{workoutName}\n{Exercises}";
+            return $"{WorkoutName}\n{Exercises}";
         }
     }
 }
