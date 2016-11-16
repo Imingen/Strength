@@ -1,3 +1,3 @@
-﻿INSERT INTO dbo.Excercises(ExerciseId, ExerciseName, ExcersiceDescription, Image, Category)
+﻿INSERT INTO dbo.Excercises( ExerciseName, ExcersiceDescription, Category)
 VALUES
-(1, 'Bench Press', 'Go full ham mah nigga', 'C:\Users\Marius\Pictures\Arnold.jpg', mnlkj);
+('Military press', 'Go full ham mah nigga', 3);

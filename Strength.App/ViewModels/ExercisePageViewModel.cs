@@ -79,13 +79,6 @@ namespace Strength.App.ViewModels
         }
     
 
-        public void createExercise()
-        {
-           // Excercise koko = new Excercise(name, description, category);
-          //  exercises.Add(koko);
-        }
-
-
         public void GotoDetailsPage() =>
           NavigationService.Navigate(typeof(Views.DetailPage));
 

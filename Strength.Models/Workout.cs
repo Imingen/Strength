@@ -16,7 +16,6 @@ namespace Strength.Models
 
         public virtual ICollection<Excercise> Exercises { get; set; }
 
-        
 
         public override string ToString()
         {

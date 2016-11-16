@@ -52,7 +52,7 @@
         <ComboBox x:Name="categoryCB" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Top" Margin="0,0,1090,0"/>
         <StackPanel Orientation="Horizontal">
             <StackPanel>
-                <ListBox x:Name="listBox" ItemsSource="{Binding exercises}"  HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="630" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-2"/>
+                <ListBox x:Name="listBox" ItemsSource="{Binding exercises}"  HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="630" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-2" SelectionChanged="listBox_SelectionChanged"/>
             </StackPanel>
             <StackPanel Width="648" HorizontalAlignment="Right">
                 <Border BorderThickness="2" BorderBrush="Black">
@@ -61,7 +61,7 @@
                 <TextBox PlaceholderText="ExerciseName" Name="ExerciseNameTB" Text="{Binding Name,Mode=TwoWay}"/>
                 <TextBox PlaceholderText="Category" Name="CategoryTB" Text="{Binding Category,Mode=TwoWay}"/>
                 <TextBox PlaceholderText="Description" Name="DescriptionTB" Height="125" Text="{Binding Description,Mode=TwoWay}"/>
-                <Button Content ="Create" Height="113" Width="648" FontSize="48" Click="{x:Bind ViewModel.createExercise }" />
+                <Button Content ="Create" Height="113" Width="648" FontSize="48" />
 
             </StackPanel>
         </StackPanel>
