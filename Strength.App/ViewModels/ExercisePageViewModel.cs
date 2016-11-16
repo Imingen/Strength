@@ -13,17 +13,42 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace Strength.App.ViewModels
 {
     public class ExercisePageViewModel : ViewModelBase, INotifyPropertyChanged
     {
-        public ObservableCollection<Excercise> exercises { get; set; } = new ObservableCollection<Excercise>();
+        
+        public ObservableCollection<Excercise> Exercises { get; set; } = new ObservableCollection<Excercise>();
         public ObservableCollection<Category> categories { get; set; } = new ObservableCollection<Category>();
         
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public ExercisePageViewModel()
+        {
+            LoadExercises();
+        }
 
+        private async void LoadExercises()
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(@"http://localhost:34117/api/");
+
+                var json = await client.GetStringAsync("Excercises");
+
+                Excercise[] exercises = JsonConvert.DeserializeObject<Excercise[]>(json);
+
+                Exercises.Clear();
+                foreach (var excercise in exercises)
+                {
+                    Exercises.Add(excercise);
+                }
+            }
+        }
+        
         private string name;
         public string Name
         {
@@ -67,6 +92,7 @@ namespace Strength.App.ViewModels
             }
         }
 
+        
 
 
 
@@ -78,6 +104,7 @@ namespace Strength.App.ViewModels
             }
         }
     
+
 
         public void GotoDetailsPage() =>
           NavigationService.Navigate(typeof(Views.DetailPage));

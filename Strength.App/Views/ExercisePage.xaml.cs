@@ -29,6 +29,7 @@ namespace Strength.App.Views
         {
             this.InitializeComponent();
             NavigationCacheMode = NavigationCacheMode.Enabled;
+            
         }
 
     }
