@@ -32,5 +32,9 @@ namespace Strength.App.Views
             
         }
 
+        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }

@@ -92,8 +92,11 @@ namespace Strength.App.ViewModels
             }
         }
 
-        
 
+        public void ListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
 
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")

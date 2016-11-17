@@ -9,33 +9,28 @@
     xmlns:local="using:Strength.App.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:vm="using:Strength.App.ViewModels"  mc:Ignorable="d">
+    xmlns:vm="using:Strength.App.ViewModels" 
+    xmlns:data="using:Strength.Models"
+    mc:Ignorable="d">
 
     <Page.DataContext>
         <vm:ExercisePageViewModel x:Name="ViewModel" />
     </Page.DataContext>
 
+    <Page.Resources>
+        <DataTemplate x:Key="Exercise" x:DataType="data:Excercise">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <!--   <Image Name="image" Source="{x:Bind Image}" HorizontalAlignment="Center" Width="150" /> -->
+                <StackPanel Margin="20,20,0,0">
+                    <TextBlock Text="{x:Bind ExerciseName }" HorizontalAlignment="Left" FontSize="16" />
+                    <TextBlock Text="{x:Bind Category}" HorizontalAlignment="Left" FontSize="10" />
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+
     <StackPanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <RelativePanel>
-            <VisualStateManager.VisualStateGroups>
-                <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
-                    <VisualState x:Name="VisualStateNarrow">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
-                        </VisualState.StateTriggers>
-                    </VisualState>
-                    <VisualState x:Name="VisualStateNormal">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
-                        </VisualState.StateTriggers>
-                    </VisualState>
-                    <VisualState x:Name="VisualStateWide">
-                        <VisualState.StateTriggers>
-                            <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
-                        </VisualState.StateTriggers>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateManager.VisualStateGroups>
 
             <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
                              RelativePanel.AlignRightWithPanel="True"
@@ -49,21 +44,25 @@
                 </controls:PageHeader.SecondaryCommands>
             </controls:PageHeader>
         </RelativePanel>
-        <ComboBox x:Name="categoryCB" PlaceholderText="Categories" ItemsSource="{Binding categories}" HorizontalAlignment="Stretch" Height="32" VerticalAlignment="Top" Margin="0,0,1090,0"/>
-        <StackPanel Orientation="Horizontal">
-            <StackPanel>
-                <ListBox x:Name="listBox" ItemsSource="{Binding Exercises}" HorizontalAlignment="Left" Height="640" VerticalAlignment="Top" Width="630" RenderTransformOrigin="0.5,0.5" Margin="0,0,0,-2"/>
-            </StackPanel>
-            <StackPanel Width="648" HorizontalAlignment="Right">
-                <Border BorderThickness="2" BorderBrush="Black">
-                    <TextBlock Text="Create a new exercise" FontSize="24" FontFamily="Consolas" TextAlignment="Center" />
-                </Border>
-                <TextBox PlaceholderText="ExerciseName" Name="ExerciseNameTB" Text="{Binding Name,Mode=TwoWay}"/>
-                <TextBox PlaceholderText="Category" Name="CategoryTB" Text="{Binding Category,Mode=TwoWay}"/>
-                <TextBox PlaceholderText="Description" Name="DescriptionTB" Height="125" Text="{Binding Description,Mode=TwoWay}"/>
-                <Button Content ="Create" Height="113" Width="648" FontSize="48" />
+        <RelativePanel>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="600">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+                <ListView Name="ex" ItemsSource="{x:Bind ViewModel.Exercises}" 
+                    ItemClick="{x:Bind ViewModel.ListView_ItemClick}"
+                  IsItemClickEnabled="True" 
+                  ItemTemplate="{StaticResource Exercise}">
+                </ListView>
+            <!--</Grid>-->
+            <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Margin="600,0,-1280,0" Height="292">-->
 
-            </StackPanel>
-        </StackPanel>
+                <GridView ItemsSource="{Binding SelectedItems, ElementName=ex.Excercise}" Margin="600,0,-600,0" 
+                  
+                  
+                          />
+            </Grid>
+        </RelativePanel>
     </StackPanel>
 </Page>
