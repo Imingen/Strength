@@ -18,16 +18,16 @@ namespace Strength.DataService.Controllers
         private StrengthContext db = new StrengthContext();
 
         // GET: api/Excercises
-        public IQueryable<Excercise> GetExercises()
+        public IQueryable<Exercise> GetExercises()
         {
             return db.Exercises;
         }
 
         // GET: api/Excercises/5
-        [ResponseType(typeof(Excercise))]
+        [ResponseType(typeof(Exercise))]
         public IHttpActionResult GetExcercise(int id)
         {
-            Excercise excercise = db.Exercises.Find(id);
+            Exercise excercise = db.Exercises.Find(id);
             if (excercise == null)
             {
                 return NotFound();
@@ -38,7 +38,7 @@ namespace Strength.DataService.Controllers
 
         // PUT: api/Excercises/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutExcercise(int id, Excercise excercise)
+        public IHttpActionResult PutExcercise(int id, Exercise excercise)
         {
             if (!ModelState.IsValid)
             {
@@ -72,8 +72,8 @@ namespace Strength.DataService.Controllers
         }
 
         // POST: api/Excercises
-        [ResponseType(typeof(Excercise))]
-        public IHttpActionResult PostExcercise(Excercise excercise)
+        [ResponseType(typeof(Exercise))]
+        public IHttpActionResult PostExcercise(Exercise excercise)
         {
             if (!ModelState.IsValid)
             {
@@ -87,10 +87,10 @@ namespace Strength.DataService.Controllers
         }
 
         // DELETE: api/Excercises/5
-        [ResponseType(typeof(Excercise))]
+        [ResponseType(typeof(Exercise))]
         public IHttpActionResult DeleteExcercise(int id)
         {
-            Excercise excercise = db.Exercises.Find(id);
+            Exercise excercise = db.Exercises.Find(id);
             if (excercise == null)
             {
                 return NotFound();

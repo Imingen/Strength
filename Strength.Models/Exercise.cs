@@ -16,13 +16,13 @@ namespace Strength.Models
         Arms
     }
 
-    public class Excercise
+    public class Exercise
     {
         [Key]
         public int ExerciseId { get; set; }
         [Required]
         public string ExerciseName { get; set; }
-        public string ExcersiceDescription { get; set; }
+        public string ExerciseDescription { get; set; }
         public byte[] Image{ get; set; }
 
         public Categories Category { get; set; }
@@ -31,7 +31,7 @@ namespace Strength.Models
 
         public override string ToString()
         {
-            return $"{ExerciseName} - {Category}\n{ExcersiceDescription}";
+            return $"{ExerciseName} - {Category}\n{ExerciseDescription}";
         }
 
     }

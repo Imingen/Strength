@@ -21,8 +21,7 @@ namespace Strength.App.ViewModels
     public class ExercisePageViewModel : ViewModelBase, INotifyPropertyChanged
     {
         
-        public ObservableCollection<Excercise> Exercises { get; set; } = new ObservableCollection<Excercise>();
-        public ObservableCollection<Category> categories { get; set; } = new ObservableCollection<Category>();
+        public ObservableCollection<Exercise> Exercises { get; set; } = new ObservableCollection<Exercise>();
         
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -39,7 +38,7 @@ namespace Strength.App.ViewModels
 
                 var json = await client.GetStringAsync("Excercises");
 
-                Excercise[] exercises = JsonConvert.DeserializeObject<Excercise[]>(json);
+                Exercise[] exercises = JsonConvert.DeserializeObject<Exercise[]>(json);
 
                 Exercises.Clear();
                 foreach (var excercise in exercises)

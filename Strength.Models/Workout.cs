@@ -14,7 +14,7 @@ namespace Strength.Models
         [Required]
         public string WorkoutName { get; set; }
 
-        public virtual ICollection<Excercise> Exercises { get; set; }
+        public virtual ICollection<Exercise> Exercises { get; set; }
 
 
         public override string ToString()
